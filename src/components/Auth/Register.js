@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  // Import useNavigate instead of useHistory
-import authService from '../../services/authService';  // Your service for API calls
+import './Register.css';  // Import the CSS file
+import authService from '../../services/authService';  // Ensure the path is correct
 
 const Register = () => {
   const navigate = useNavigate();  // Use useNavigate instead of useHistory
@@ -22,48 +23,52 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleRegister}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <div className="register-container">
+      <div className="register-card">
+        <div className="register-header">
+          <h2>Register</h2>
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Full Name:</label>
-          <input
-            type="text"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Phone Number:</label>
-          <input
-            type="text"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
+        {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleRegister}>
+          <div className="input-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>Full Name:</label>
+            <input
+              type="text"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label>Phone Number:</label>
+            <input
+              type="text"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="register-btn">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };
